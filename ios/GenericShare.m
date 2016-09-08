@@ -48,7 +48,49 @@
         [ctrl presentViewController:composeController animated:YES completion:Nil];
     } else {
         NSLog(@"No installed");
-        //  TODO: Add web url share
+        
+        
+        NSString *URL = [RCTConvert NSString: options[@"url"]];
+        
+        NSString *shareURL = [RCTConvert NSString: options[@"urlShare"]];
+        
+        NSString *newURL = [shareURL stringByAppendingString: URL];
+        
+        
+        if ([options objectForKey:@"image"] && [options objectForKey:@"image"] != [NSNull null]) {
+            NSString *image = [RCTConvert NSString:options[@"image"]];
+            NSString *imageParameter = @"&picture=";
+            
+            image = [imageParameter stringByAppendingString: image];
+            
+            newURL = [newURL stringByAppendingString: image];
+            
+        }
+        
+        
+        if ([options objectForKey:@"description"] && [options objectForKey:@"description"] != [NSNull null]) {
+            NSString *description = [RCTConvert NSString:options[@"description"]];
+            NSString *descriptionParameter = @"&description=";
+            
+            description = [descriptionParameter stringByAppendingString: description];
+            
+            newURL = [newURL stringByAppendingString: description];
+        }
+
+        
+        if ([options objectForKey:@"message"] && [options objectForKey:@"message"] != [NSNull null]) {
+            NSString *message = [RCTConvert NSString:options[@"message"]];
+            NSString *messageParameter = @"&text=";
+            
+            message = [messageParameter stringByAppendingString: message];
+            
+            newURL = [newURL stringByAppendingString: message];
+            
+        }
+
+        NSURL *urlOUT = [NSURL URLWithString:newURL];
+        [[UIApplication sharedApplication] openURL: urlOUT];
+    
     }
 
 

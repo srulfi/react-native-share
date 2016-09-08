@@ -45,13 +45,15 @@ public abstract class SingleShareIntent extends ShareIntent {
                 if(getDefaultWebLink() != null) {
                     url = getDefaultWebLink()
                             .replace("{url}",       this.urlEncode( options.getString("url") ) )
-                            .replace("{message}",   this.urlEncode( options.getString("message") ));
+                            .replace("{message}",   this.urlEncode( options.getString("message") ))
+                            .replace("{image}",   this.urlEncode( options.getString("image") ))
+                            .replace("{description}",   this.urlEncode( options.getString("description") ));
                 } else if(getPlayStoreLink() != null) {
                     url = getPlayStoreLink();
                 } else{
                     //  TODO
                 }
-                //  open web intent
+
                 this.setIntent(new Intent(new Intent("android.intent.action.VIEW", Uri.parse(url))));
             }
         } else {
