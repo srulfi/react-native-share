@@ -21,7 +21,7 @@ public abstract class ShareIntent {
 
     protected final ReactApplicationContext reactContext;
     protected Intent intent;
-    protected String chooserTitle = "Share";
+    protected String chooserTitle = "Compartir";
     public ShareIntent(ReactApplicationContext reactContext) {
         this.reactContext = reactContext;
         this.setIntent(new Intent(android.content.Intent.ACTION_SEND));
