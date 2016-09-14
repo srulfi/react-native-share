@@ -17,7 +17,7 @@
 
     if ([options objectForKey:@"message"] && [options objectForKey:@"message"] != [NSNull null]) {
         NSString *text = [RCTConvert NSString:options[@"message"]];
-        NSString * urlWhats = [NSString stringWithFormat:@"whatsapp://send?text=%@", [text stringByAppendingString: [@" " stringByAppendingString: options[@"url"]] ]];
+        NSString * urlWhats = [NSString stringWithFormat:@"whatsapp://send?text=%@", text];
         NSURL * whatsappURL = [NSURL URLWithString:[urlWhats stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 
         if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
