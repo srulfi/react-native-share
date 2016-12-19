@@ -52,6 +52,8 @@
         
         NSString *URL = [RCTConvert NSString: options[@"url"]];
         
+        NSString *id = [RCTConvert NSString:options[@"social"]];
+        
         NSString *shareURL = [RCTConvert NSString: options[@"urlShare"]];
         
         NSString *newURL = [shareURL stringByAppendingString: URL];
@@ -80,6 +82,11 @@
         
         if ([options objectForKey:@"message"] && [options objectForKey:@"message"] != [NSNull null]) {
             NSString *message = [RCTConvert NSString:options[@"message"]];
+            
+            if( [id caseInsensitiveCompare:@"twitter"] == 0 ) {
+                message = [message stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            }
+            
             NSString *messageParameter = @"&text=";
             
             message = [messageParameter stringByAppendingString: message];
