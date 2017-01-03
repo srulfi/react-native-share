@@ -95,7 +95,8 @@
 
         }
         
-        NSString *redirect = @"http://movistarfriacj3bey5k7.devcloud.acquia-sites.com";
+        
+        NSString *redirect = [RCTConvert NSString:options[@"base"]];
         NSString *redirectParameter = @"&redirect_uri=";
         
         redirect = [redirectParameter stringByAppendingString: redirect];
