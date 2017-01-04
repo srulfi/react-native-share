@@ -96,7 +96,7 @@
         }
         
         
-        NSString *redirect = [RCTConvert NSString:options[@"base"]];
+        NSString *redirect = @"http://frimovistar.com.ar";
         NSString *redirectParameter = @"&redirect_uri=";
         
         redirect = [redirectParameter stringByAppendingString: redirect];
