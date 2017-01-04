@@ -47,8 +47,7 @@ public abstract class SingleShareIntent extends ShareIntent {
                             .replace("{url}",       this.urlEncode( options.getString("url") ) )
                             .replace("{message}",   this.urlEncode( options.getString("message") ))
                             .replace("{image}",   this.urlEncode( options.getString("image") ))
-                            .replace("{description}",   this.urlEncode( options.getString("description") ))
-                            .replace("{base}",   this.urlEncode( options.getString("base") ));
+                            .replace("{description}",   this.urlEncode( options.getString("description") ));
                 } else if(getPlayStoreLink() != null) {
                     url = getPlayStoreLink();
                 } else{
