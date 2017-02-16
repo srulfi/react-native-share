@@ -22,12 +22,19 @@
 
         if ([[UIApplication sharedApplication] canOpenURL: whatsappURL]) {
             [[UIApplication sharedApplication] openURL: whatsappURL];
+            successCallback(@[]);
         } else {
-            // Cannot open whatsapp
-            NSLog(@"No installed");
-            NSString *stringURL = @"http://itunes.apple.com/en/app/whatsapp-messenger/id310633997";
-            NSURL *url = [NSURL URLWithString:stringURL];
-            [[UIApplication sharedApplication] openURL:url];
+          // Cannot open whatsapp
+          NSString *stringURL = @"http://itunes.apple.com/en/app/whatsapp-messenger/id310633997";
+          NSURL *url = [NSURL URLWithString:stringURL];
+          [[UIApplication sharedApplication] openURL:url];
+
+          NSString *errorMessage = @"Not installed";
+          NSDictionary *userInfo = @{NSLocalizedFailureReasonErrorKey: NSLocalizedString(errorMessage, nil)};
+          NSError *error = [NSError errorWithDomain:@"com.rnshare" code:1 userInfo:userInfo];
+
+          NSLog(errorMessage);
+          failureCallback(error);
         }
     }
 

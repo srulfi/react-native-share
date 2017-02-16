@@ -46,9 +46,8 @@
 
         UIViewController *ctrl = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
         [ctrl presentViewController:composeController animated:YES completion:Nil];
+        successCallback(@[]);
     } else {
-        NSLog(@"No installed");
-        
         
         NSString *URL = [RCTConvert NSString: options[@"url"]];
         
